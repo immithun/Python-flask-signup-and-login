@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h2 class="mb-0">User Dashboard</h2>
+                    </div>
+                    <div class="card-body">
+                        {% if user %}
+                            <p class="lead">Welcome, {{ user.first_name }} {{ user.last_name }}!</p>
+                            <ul class="list-group">
+                                <li class="list-group-item">Username: {{ user.username }}</li>
+                                <li class="list-group-item">Email: {{ user.email }}</li>
+                                <li class="list-group-item">Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }}, {{ user.pincode }}</li>
+                                <li class="list-group-item">User Type: {{ user.user_type }}</li>
+                                <!-- Add other details as needed -->
+                            </ul>
+                        {% else %}
+                            <p>User not found</p>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <a href="/logout" class="btn btn-danger">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
